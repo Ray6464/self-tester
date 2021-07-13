@@ -1,0 +1,31 @@
+{
+  "name": "self-tester",
+  "version": "1.0.0",
+  "description": "A program for self-testing to memorse and test read material. It takes in an input file compraised of reading material arranged in lines, and each line is presented to you in from of Fill-in-the blank like questions.",
+  "main": "self-tester.min.js",
+  "scripts": {
+    "test": "node tests/mainTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ray6464/self-tester.git"
+  },
+  "keywords": [
+    "test",
+    "self-test",
+    "ray-userland"
+  ],
+  "author": "Ray Voice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ray6464/self-tester/issues"
+  },
+  "homepage": "https://github.com/Ray6464/self-tester#readme",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "ironberry": "^2.0.1",
+    "ray-flags": "^0.0.7",
+    "ray-fs": "^2.2.1",
+    "sucide": "^1.0.1"
+  }
+}

@@ -1,3 +1,6 @@
+tests
+self-tester.min.js
+
 # Logs
 logs
 *.log
