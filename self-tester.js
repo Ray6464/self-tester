@@ -3,7 +3,7 @@
 const flags = require('ray-flags');
 const sucide = require('sucide');
 
-if (flags.v) sucide('v1.0.4');
+if (flags.v) sucide('v1.0.5');
 
 const {questionsHive} = require('./getArrayOfQuestions.js');
 const {screen, box, showAnswerButton,
