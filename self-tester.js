@@ -1,33 +1,39 @@
 #!/usr/bin/env node
 
-const {blankedOutContents, arrayOfAnswers} = require('./getArrayOfQuestions.js');
-const {screen, box, showAnswerButton, submitButton} = require('./gui.js');
+const {questionsHive} = require('./getArrayOfQuestions.js');
+const {screen, box, showAnswerButton,
+	nextButton, defaultScreenContent} = require('./gui.js');
 
-submitButton.on('click', function(data) {
-  box.setContent('Clicked Button!'); // make this the nextQuestion Function
+nextButton.on('click', function(data) {
+  currentQuestion.number++;
+  updateQuestion();
   screen.render();
 });
 
 showAnswerButton.on('click', function(data) {
-  box.setContent('Clicked Button!'); // make this the nextQuestion Function
+  showAnswer();
   screen.render();
 });
 
+let currentQuestion = {
+  number: 1,
+};
+updateQuestion(box, currentQuestion, questionsHive[currentQuestion.number-1].question);
 
-function showAnswer(textBox, qNum, answer) {
-  const oldText = textBox.getContent();
+function showAnswer() {
+  const oldText = box.getContent();
   const newText = oldText + '\n\n'
-    + `{center}${answer}{/center}`;
-  textBox.setContent(newText);
+    + `{center}Answer:{/center}` + '\n\n'
+    + `{center}${questionsHive[currentQuestion.number-1].uncensord}{/center}`;
+  box.setContent(newText);
   screen.render();
 }
 
-function updateQuestion(textBox, qNum, question) {
-  const oldText = textBox.getContent();
-  const newText = oldText + '\n\n'
-    + `{center}Question ${qNum} out of ${blankedOutContents.length}{/center}` 
-    + '\n\n' + `{center}${question}{/center}`;
-  textBox.setContent(newText);
+function updateQuestion() {
+  const newText = defaultScreenContent + '\n\n'
+    + `{center}Question ${currentQuestion.number} out of ${questionsHive.length}{/center}` 
+    + '\n\n' + `{center}${questionsHive[currentQuestion.number -1].question}{/center}`;
+  box.setContent(newText);
   screen.render();
 }
 

@@ -17,17 +17,24 @@ const condensedFileContents = exactFacts.filter(line => /[\w]+/.test(line));
 
 const arrayOfAnswers = [];
 
-const blankedOutContents = condensedFileContents.map(line => line.split(' ').map(word => {
-  if (word.length > 2) {
-    if (randomNumber(1,100) > 75) {
-      arrayOfAnswers.push(word);
-      return rangeOfChara('_', word.length);
+const blankedOutContents = condensedFileContents.map((line, index) => {
+  return line.split(' ').map(word => {
+    if (3 < word.length) {
+      if (70 < randomNumber(1,100)) {
+        arrayOfAnswers.push(word);
+        return rangeOfChara('_', word.length);
+      }
+      else return word;
+    } else {
+      return word;
     }
-    else return word;
-  } else {
-    return word;
-  }
-}).join(' ')); 
+  }).join(' ');
+}) 
+/* Neural net will work on generating blankedOutContents*/
+
+const questionsHive = blankedOutContents.map((line, index) => {
+  return { question: line, uncensord: condensedFileContents[index] }
+});
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -36,4 +43,6 @@ function randomNumber(min, max) {
 module.exports = {
   blankedOutContents: blankedOutContents, 
   arrayOfAnswers: arrayOfAnswers,
+  questionsHive: questionsHive,
 }
+

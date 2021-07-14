@@ -1,27 +1,28 @@
 const blessed = require('blessed');
 
+const defaultScreenContent = '{bold}Smart-Tester{/bold} by Ray Voice! @rayshorthead';
 const screen = blessed.screen({
   smartCSR: true
 });
 screen.title = 'Self-Tester';
 
 const box = blessed.box({
-  content: '{bold}Smart-Tester{/bold} by Ray Voice! @rayshorthead',
+  content: defaultScreenContent,
   tags: true,
   border: {type: 'line'},
 });
 screen.append(box);
 
-const submitButton = blessed.button({
+const nextButton = blessed.button({
   top: '48%',
   left: 'center',
   height: '6%',
   width: '18%',
-  content: 'Submit Answer',
+  content: 'Next Question',
   border: {type:'line'},
   style: { hover: { bg: 'green'}}
 });
-screen.append(submitButton);
+screen.append(nextButton);
 
 const showAnswerButton = blessed.button({
   top: '40%',
@@ -44,9 +45,10 @@ box.focus();
 screen.render();
 
 module.exports = {
+  defaultScreenContent: defaultScreenContent,
   screen: screen,
   box: box,
   showAnswerButton: showAnswerButton,
-  submitButton: submitButton,
+  nextButton: nextButton,
 }
 
