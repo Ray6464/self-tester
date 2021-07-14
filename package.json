@@ -1,6 +1,6 @@
 {
   "name": "self-tester",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A program for self-testing to memorse and test read material. It takes in an input file compraised of reading material arranged in lines, and each line is presented to you in from of Fill-in-the blank like questions.",
   "main": "self-tester.js",
   "scripts": {

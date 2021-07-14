@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+const flags = require('ray-flags');
+const sucide = require('sucide');
+
+if (flags.v) sucide('v1.0.4');
+
 const {questionsHive} = require('./getArrayOfQuestions.js');
 const {screen, box, showAnswerButton,
 	nextButton, defaultScreenContent} = require('./gui.js');

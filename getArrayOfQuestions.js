@@ -17,14 +17,24 @@ const condensedFileContents = exactFacts.filter(line => /[\w]+/.test(line));
 
 const arrayOfAnswers = [];
 
+// There is an inverse co-relatin between the length of the word and its importance, generally speaking
 const blankedOutContents = condensedFileContents.map((line, index) => {
   return line.split(' ').map(word => {
-    if (3 < word.length) {
-      if (70 < randomNumber(1,100)) {
-        arrayOfAnswers.push(word);
-        return rangeOfChara('_', word.length);
-      }
-      else return word;
+    if (9 < word.length) {
+      arrayOfAnswers.push(word);
+      return rangeOfChara('_', word.length);
+    }
+    else if (7 < word.length && 3 < randomNumber(1,10)) {
+      arrayOfAnswers.push(word);
+      return rangeOfChara('_', word.length);
+    }
+    else if (5 < word.length && 5 < randomNumber(1,10)) {
+      arrayOfAnswers.push(word);
+      return rangeOfChara('_', word.length);
+    }
+    else if (3 < word.length && 7 < randomNumber(1,10)) {
+      arrayOfAnswers.push(word);
+      return rangeOfChara('_', word.length);
     } else {
       return word;
     }
