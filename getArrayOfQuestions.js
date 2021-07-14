@@ -50,9 +50,18 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+function shuffle(arr) { // Fisher-Yates/Knuth algo,
+  let r;
+  arr.forEach((item, index)=>{
+    r = Math.floor(Math.random() * index);
+    [arr[index], arr[r]] = [arr[r], arr[index]];
+  });
+  return arr;
+}
+
 module.exports = {
   blankedOutContents: blankedOutContents, 
   arrayOfAnswers: arrayOfAnswers,
-  questionsHive: questionsHive,
+  questionsHive: shuffle(questionsHive),
 }
 
